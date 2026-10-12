@@ -19,7 +19,7 @@ export default function Home() {
     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
       {products.map((p) => (
         <div key={p.id} className="rounded-lg border p-3">
-          <Link href={`/products/${p.id}`}>
+          <Link href={`/product?id=${p.id}`}>
             <img src={p.cover_image_url} alt={p.name} className="aspect-square w-full rounded object-cover" />
             <p className="mt-2 font-medium">{p.name}</p>
           </Link>

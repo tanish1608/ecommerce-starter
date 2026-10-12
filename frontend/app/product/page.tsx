@@ -1,20 +1,19 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { API_URL, addToCart, formatPrice, Product } from "@/lib/api";
 
 export default function ProductPage() {
-  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
 
   useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("id");
     fetch(`${API_URL}/products/${id}`)
       .then((res) => res.json())
       .then(setProduct);
-  }, [id]);
+  }, []);
 
   if (!product) return <p>Loading...</p>;
 
